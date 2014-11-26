@@ -9,3 +9,5 @@ $manifest['description'] = __( 'Creates a simplified navigation menu for the pag
 $manifest['version'] = '1.0.0';
 $manifest['display'] = true;
 $manifest['standalone'] = true;
+
+$manifest['github_update'] = 'ThemeFuse/Unyson-Breadcrumbs-Extension';
