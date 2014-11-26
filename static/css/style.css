@@ -1,0 +1,10 @@
+.breadcrumbs {
+	margin: 12px 0;
+	font-size: 80%;
+	line-height: 1.3em;
+}
+
+.breadcrumbs a{
+	text-decoration: none;
+	/*color: inherit;*/
+}
