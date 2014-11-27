@@ -1,42 +1,35 @@
 <?php if (!defined('FW')) die('Forbidden'); ?>
 
-# Unyson Framework
+##STEP 1
 
-[Unyson](http://unyson.themefuse.com/) is a framework for [WordPress](http://wordpress.org/) that facilitates development of a theme.
+###Copy the breadcrumbs code
 
-This framework was created from the ground up by the team behind [ThemeFuse](http://themefuse.com/) from the desire to empower developers to build outstanding WordPress themes fast and easy.
+This code is what displays the breadcrumbs on your website. Copy the following to your clipboard:
 
-To get started, check out http://unyson.themefuse.com/ !
+<code>&lt;?php if( function_exists('fw_ext_breadcrumbs') ) { fw_ext_breadcrumbs(); } ?&gt;</code>
 
-----
+---
 
-## Installation
+##STEP 2
 
-1. [Download the latest release](https://github.com/ThemeFuse/Unyson/releases/latest).
-2. Extract the zip in the `wp-content/themes` directory.
+###Paste the breadcrumbs code in your theme
 
-## Bug reports
+Open Appearance/Editor and select <strong>single.php</strong> file to edit.
 
-We strive to make Unyson Development  to be awesome and user friendly, though sometimes it's impossible to avoid bugs.
-A bug means "something is broken" or is not working as it should.
+In the theme, paste the code where you want your breadcrumbs to appear (usually beneath the the_title() tag) and then save your theme.
 
-In order to offer you an effective support and fix for an issue, please follow the below guidelines before submitting a bug report:
+---
 
-#### Explore Known Issues
+##STEP 3
 
-Has your issue already been reported? Check the [Issues page](https://github.com/ThemeFuse/Unyson/issues).
+###Add the breadcrumbs to your archive listings
 
-If your issue has already been reported, great! It will be reviewed in an upcoming release.
+Copy the following code to your clipboard:
 
-#### Submitting a Bug Report
+<code>&lt;?php if( function_exists('fw_ext_breadcrumbs') ) { fw_ext_breadcrumbs(); } ?&gt;</code>
 
-You can report the issue via [Issues page](https://github.com/ThemeFuse/Unyson/issues).
-A good bug report includes full details to easily understand the issue you are having.
+Open Appearance/Editor and select <strong>archive.php</strong> file to edit.
 
-## Documentation
+In the theme, find the place where each item is rendered and paste the code inside that code block.
 
-Unyson's documentation is available on http://unyson-docs.themefuse.com/.
-
-## Copyright and license
-
-Code and documentation copyright 2014 ThemeFuse LTD. Code released under [the GPL license](https://github.com/ThemeFuse/Unyson/blob/master/LICENSE). Docs released under [Creative Commons](https://github.com/ThemeFuse/Unyson-Documentation/blob/master/LICENSE).
+Then, save your theme.
