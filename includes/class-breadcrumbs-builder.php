@@ -190,11 +190,19 @@ class Breadcrumbs_Builder {
 			$return[] = $author;
 		} elseif ( is_date() ) {
 			$date  = array();
-			$day   = get_query_var( 'day' );
-			$month = get_query_var( 'monthnum' );
-			$year  = get_query_var( 'year' );
 
-			if ( ! empty( $day ) ) {
+			if ( get_option( 'permalink_structure' ) ) {
+				$day   = get_query_var( 'day' );
+				$month = get_query_var( 'monthnum' );
+				$year  = get_query_var( 'year' );
+			} else {
+				$m = get_query_var('m');
+				$year = substr( $m, 0, 4 );
+				$month = substr( $m, 4, 2 );
+				$day = substr( $m, 6, 2 );
+			}
+
+			if ( is_day() ) {
 				$date['name']      = mysql2date( apply_filters( 'fw_ext_breadcrumbs_date_day_format', 'd F Y' ),
 					$day . '-' . $month . '-' . $year );
 				$date['url']       = get_day_link( $year, $month, $day );
@@ -202,7 +210,7 @@ class Breadcrumbs_Builder {
 				$date['day']       = $day;
 				$date['month']     = $month;
 				$date['year']      = $year;
-			} elseif ( ! empty( $month ) ) {
+			} elseif ( is_month() ) {
 				$date['name']      = mysql2date( apply_filters( 'fw_ext_breadcrumbs_date_month_format', 'F Y' ),
 					'01.' . $month . '.' . $year );
 				$date['url']       = get_month_link( $year, $month );
