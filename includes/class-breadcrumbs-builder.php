@@ -98,7 +98,7 @@ class Breadcrumbs_Builder {
 				'name' => $this->settings['labels']['homepage-title'],
 				'url'  => home_url(),
 				'type' => 'front_page'
-			)
+			),
 		);
 
 
@@ -107,7 +107,7 @@ class Breadcrumbs_Builder {
 
 			$page['type'] = '404';
 			$page['name'] = $this->settings['labels']['404-title'];
-			$page['url']  = $_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
+			$page['url']  = fw_current_url();
 
 			$return[] = $page;
 		} elseif ( is_search() ) {
