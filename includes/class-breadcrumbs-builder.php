@@ -123,7 +123,7 @@ class Breadcrumbs_Builder {
 		} elseif ( is_home() ) {
 			$blog = array(
 				'name' => $this->settings['labels']['blogpage-title'],
-				'url'  => $_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'],
+				'url'  => fw_current_url(),
 				'type' => 'front_page'
 			);
 
