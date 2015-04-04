@@ -101,6 +101,13 @@ class Breadcrumbs_Builder {
 			),
 		);
 
+		$custom_page = apply_filters( 'fw_ext_breadcrumbs_current_page', array() );
+
+		if ( is_array( $custom_page ) && ! empty( $custom_page ) ) {
+			$return[] = $custom_page;
+			$return = apply_filters( 'fw_ext_breadcrumbs_build', $return );
+			return $return;
+		}
 
 		if ( is_404() ) {
 			$page = array();
