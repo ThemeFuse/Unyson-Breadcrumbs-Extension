@@ -47,14 +47,14 @@
 			<?php elseif ( $i == 0 ) : ?>
 				<span class="first-item">
 				<?php if( isset( $items[ $i ]['url'] ) ) : ?>
-					<a href="<?php echo $items[ $i ]['url'] ?>"><?php echo $items[ $i ]['name'] ?></a></span>
+					<a href="<?php echo esc_attr($items[ $i ]['url']) ?>"><?php echo $items[ $i ]['name'] ?></a></span>
 				<?php else : echo $items[ $i ]['name']; endif ?>
 				<span class="separator"><?php echo $separator ?></span>
 			<?php
 			else : ?>
 				<span class="<?php echo( $i - 1 ) ?>-item">
 					<?php if( isset( $items[ $i ]['url'] ) ) : ?>
-						<a href="<?php echo $items[ $i ]['url'] ?>"><?php echo $items[ $i ]['name'] ?></a></span>
+						<a href="<?php echo esc_attr($items[ $i ]['url']) ?>"><?php echo $items[ $i ]['name'] ?></a></span>
 					<?php else : echo $items[ $i ]['name']; endif ?>
 				<span class="separator"><?php echo $separator ?></span>
 			<?php endif ?>
