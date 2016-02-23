@@ -9,6 +9,7 @@ $default_values = apply_filters('fw_ext_breadcrumbs_settings_options_default_val
 ));
 
 $options = array(
+	apply_filters('fw:ext:breadcrumbs:settings-options:before', array()),
 	'box' => array(
 		'title'   => false,
 		'type'    => 'box',
@@ -32,5 +33,6 @@ $options = array(
 				'value' => $default_values['404-title']
 			),
 		)
-	)
+	),
+	apply_filters('fw:ext:breadcrumbs:settings-options:after', array()),
 );
