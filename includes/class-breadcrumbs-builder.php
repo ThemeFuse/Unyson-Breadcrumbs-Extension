@@ -236,9 +236,10 @@ class Breadcrumbs_Builder {
 		} elseif ( is_archive() ) {
 			$post_type = get_query_var( 'post_type' );
 			if ( $post_type ) {
-				$post_type       = get_post_type_object( $post_type );
+				$post_type_obj   = get_post_type_object( $post_type );
 				$archive         = array();
-				$archive['name'] = $post_type->labels->name;
+				$archive['name'] = $post_type_obj->labels->name;
+				$archive['url']  = get_post_type_archive_link( $post_type );
 				$return[]        = $archive;
 			}
 		}
