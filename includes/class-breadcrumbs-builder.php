@@ -131,8 +131,9 @@ class Breadcrumbs_Builder {
 
 			$blog = array();
 
-			if ( get_option( 'show_on_front' ) == 'page' && !empty( get_option( 'page_for_posts' ) ) ) {
-				$post = get_post(get_option('page_for_posts' ));
+			$page_for_posts = get_option( 'page_for_posts' );
+			if ( get_option( 'show_on_front' ) == 'page' && ! empty( $page_for_posts ) ) {
+				$post = get_post( $page_for_posts );
 				$blog['name'] = $post->the_title;
 				$blog['url'] = get_permalink($post->ID);
 				$blog['type'] = 'posts_page';
