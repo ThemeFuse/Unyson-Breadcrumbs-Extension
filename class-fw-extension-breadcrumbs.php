@@ -30,6 +30,7 @@ class FW_Extension_Breadcrumbs extends FW_Extension {
 
 		$data['items']     = $breadcrumbs->get_breadcrumbs();
 		$data['separator'] = $separator;
+		$data['prefix'] = fw_get_db_ext_settings_option( $this->get_name(), 'prefix' );
 
 		return $this->render_view( 'breadcrumbs', $data );
 	}
