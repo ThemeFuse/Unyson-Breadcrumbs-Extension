@@ -6,7 +6,6 @@ $default_values = apply_filters('fw_ext_breadcrumbs_settings_options_default_val
 	'homepage-title' => __( 'Homepage', 'fw' ),
 	'blogpage-title' => __( 'Blog', 'fw' ),
 	'404-title' => __('404 Not Found', 'fw'),
-	'prefix' => '',
 ));
 
 $options = array(
@@ -32,12 +31,6 @@ $options = array(
 				'desc'  => __( 'The 404 anchor will have this text', 'fw' ),
 				'type'  => 'text',
 				'value' => $default_values['404-title']
-			),
-			'show-last'           => array(
-				'label' => __( 'Prefix', 'fw' ),
-				'desc'  => __( 'Text displayed before breadcrumbs links' ),
-				'type'  => 'text',
-				'value' => $default_values['prefix'],
 			),
 		)
 	),
