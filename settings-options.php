@@ -34,7 +34,8 @@ $options = array(
 				'value' => $default_values['404-title']
 			),
 			'show-last'           => array(
-				'label' => __( 'Breadcrumb Prefix', 'fw' ),
+				'label' => __( 'Prefix', 'fw' ),
+				'desc'  => __( 'Text displayed before breadcrumbs links' ),
 				'type'  => 'text',
 				'value' => $default_values['prefix'],
 			),
