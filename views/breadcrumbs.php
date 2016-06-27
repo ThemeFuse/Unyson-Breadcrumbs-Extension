@@ -41,6 +41,9 @@
 
 <?php if ( ! empty( $items ) ) : ?>
 	<div class="breadcrumbs">
+		<?php if( $prefix !== '' ) :?>
+			<span class="prefix"><?php echo $prefix; ?></span>
+		<?php endif; ?>
 		<?php for ( $i = 0; $i < count( $items ); $i ++ ) : ?>
 			<?php if ( $i == ( count( $items ) - 1 ) ) : ?>
 				<span class="last-item"><?php echo $items[ $i ]['name'] ?></span>
