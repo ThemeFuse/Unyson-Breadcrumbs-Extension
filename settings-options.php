@@ -24,7 +24,7 @@ $options = array(
 				'label' => __( 'Text for Blog Page', 'fw' ),
 				'desc'  => __( 'The blog page anchor will have this text. In case homepage will be set as blog page, will be taken the homepage text', 'fw' ),
 				'type'  => 'text',
-				'value' => $default_values['homepage-title']
+				'value' => $default_values['blogpage-title']
 			),
 			'404-title'           => array(
 				'label' => __( 'Text for 404 Page', 'fw' ),

@@ -129,20 +129,11 @@ class Breadcrumbs_Builder {
 		} elseif ( is_front_page() ) {
 		} elseif ( is_home() ) {
 
-			$blog = array();
-
-			if ( get_option( 'show_on_front' ) == 'page' && !empty( get_option( 'page_for_posts' ) ) ) {
-				$post = get_post(get_option('page_for_posts' ));
-				$blog['name'] = $post->the_title;
-				$blog['url'] = get_permalink($post->ID);
-				$blog['type'] = 'posts_page';
-			} else {
-				$blog = array(
-					'name' => $this->settings['labels']['blogpage-title'],
-					'url'  => fw_current_url(),
-					'type' => 'front_page'
-				);
-			}
+			$blog = array(
+				'name' => $this->settings['labels']['blogpage-title'],
+				'url'  => fw_current_url(),
+				'type' => 'front_page'
+			);
 
 			$return[] = $blog;
 		} elseif ( is_page() ) {
