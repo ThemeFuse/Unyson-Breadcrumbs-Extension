@@ -155,11 +155,18 @@ class Breadcrumbs_Builder {
 
 				if ( ! empty( $terms ) ) {
 					$term = array_shift( $terms );
-					unset( $terms );
+					$term_child = get_term_children( $term->term_id, $term->taxonomy );
 
-					$return = array_merge( $return,
-						array_reverse( $this->get_term_hierarchy( $term->term_id, $term->taxonomy ) )
-					);
+					if( count($term_child) > 0 ){
+						$term_childs = get_term( $term_child[0], $term->taxonomy );
+						$return = array_merge( $return,
+							array_reverse( $this->get_term_hierarchy( $term_childs->term_id, $term->taxonomy ) )
+						);
+					}else{
+						$return = array_merge( $return,
+							array_reverse( $this->get_term_hierarchy( $term->term_id, $term->taxonomy ) )
+						);
+					}
 				}
 			}
 
