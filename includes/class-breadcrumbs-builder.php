@@ -154,19 +154,11 @@ class Breadcrumbs_Builder {
 				$terms = wp_get_post_terms( $post->ID, $slugs );
 
 				if ( ! empty( $terms ) ) {
-					$term = array_shift( $terms );
-					$term_child = get_term_children( $term->term_id, $term->taxonomy );
-
-					if( count($term_child) > 0 ){
-						$term_childs = get_term( $term_child[0], $term->taxonomy );
-						$return = array_merge( $return,
-							array_reverse( $this->get_term_hierarchy( $term_childs->term_id, $term->taxonomy ) )
-						);
-					}else{
-						$return = array_merge( $return,
-							array_reverse( $this->get_term_hierarchy( $term->term_id, $term->taxonomy ) )
-						);
-					}
+					$lowest_term = $this->get_lowest_taxonomy_terms($terms);
+					$term = $lowest_term[0];
+					$return = array_merge( $return,
+						array_reverse( $this->get_term_hierarchy( $term->term_id, $term->taxonomy ))
+					);
 				}
 			}
 
@@ -272,6 +264,46 @@ class Breadcrumbs_Builder {
 		$return = apply_filters( 'fw_ext_breadcrumbs_build', $return );
 
 		return $return;
+	}
+
+	/**
+	 * Returns the lowest hierarchical term
+	 * @return array
+	 */
+	private function get_lowest_taxonomy_terms( $terms ) {
+		// if terms is not array or its empty don't proceed
+		if ( ! is_array( $terms ) || empty( $terms ) ) {
+			return false;
+		}
+
+		$filter = function($terms) use (&$filter) {
+
+			$return_terms = array();
+			$term_ids = array();
+
+			foreach ($terms as $t){
+				$term_ids[] = $t->term_id;
+			}
+
+			foreach ( $terms as $t ) {
+				if( $t->parent == false || !in_array($t->parent,$term_ids) )  {
+					//remove this term
+				}
+				else{
+					$return_terms[] = $t;
+				}
+			}
+
+			if( count($return_terms) ){
+				return $filter($return_terms);
+			}
+			else {
+				return $terms;
+			}
+
+		};
+
+		return $filter($terms);
 	}
 
 	/**
