@@ -276,34 +276,30 @@ class Breadcrumbs_Builder {
 			return false;
 		}
 
-		$filter = function($terms) use (&$filter) {
+		return $this->filter_terms($terms);
+	}
 
-			$return_terms = array();
-			$term_ids = array();
+	private function filter_terms($terms) {
+		$return_terms = array();
+		$term_ids = array();
 
-			foreach ($terms as $t){
-				$term_ids[] = $t->term_id;
+		foreach ($terms as $t) {
+			$term_ids[] = $t->term_id;
+		}
+
+		foreach ( $terms as $t ) {
+			if ( $t->parent == false || !in_array($t->parent,$term_ids) )  {
+				// remove this term
+			} else {
+				$return_terms[] = $t;
 			}
+		}
 
-			foreach ( $terms as $t ) {
-				if( $t->parent == false || !in_array($t->parent,$term_ids) )  {
-					//remove this term
-				}
-				else{
-					$return_terms[] = $t;
-				}
-			}
-
-			if( count($return_terms) ){
-				return $filter($return_terms);
-			}
-			else {
-				return $terms;
-			}
-
-		};
-
-		return $filter($terms);
+		if ( count($return_terms) ) {
+			return $this->filter_terms($return_terms);
+		} else {
+			return $terms;
+		}
 	}
 
 	/**
