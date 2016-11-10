@@ -13,5 +13,9 @@ $manifest['description'] = __(
 $manifest['version'] = '1.0.14';
 $manifest['display'] = true;
 $manifest['standalone'] = true;
+$manifest['github_repo'] = 'https://github.com/ThemeFuse/Unyson-Breadcrumbs-Extension';
+$manifest['uri'] = 'http://manual.unyson.io/en/latest/extension/breadcrumbs/index.html#content';
+$manifest['author'] = 'ThemeFuse';
+$manifest['author_uri'] = 'http://themefuse.com/';
 
 $manifest['github_update'] = 'ThemeFuse/Unyson-Breadcrumbs-Extension';
