@@ -43,19 +43,24 @@
 	<div class="breadcrumbs">
 		<?php for ( $i = 0; $i < count( $items ); $i ++ ) : ?>
 			<?php if ( $i == ( count( $items ) - 1 ) ) : ?>
-				<span class="last-item"><?php echo $items[ $i ]['name'] ?></span>
+				<span class="last-item" itemscope itemtype="http://data-vocabulary.org/Breadcrumb">
+					<span itemprop="title"><?php echo $items[ $i ]['name'] ?></span>
+					<meta itemprop="url" content="<?php echo esc_attr($items[ $i ]['url']) ?>" />
+				</span>
 			<?php elseif ( $i == 0 ) : ?>
-				<span class="first-item">
+				<span class="first-item" itemscope itemtype="http://data-vocabulary.org/Breadcrumb">
 				<?php if( isset( $items[ $i ]['url'] ) ) : ?>
-					<a href="<?php echo esc_attr($items[ $i ]['url']) ?>"><?php echo $items[ $i ]['name'] ?></a></span>
+					<a href="<?php echo esc_attr($items[ $i ]['url']) ?>" itemprop="url"><span itemprop="title"><?php echo $items[ $i ]['name'] ?></span></a>
+				</span>
 				<?php else : echo $items[ $i ]['name']; endif ?>
 				<span class="separator"><?php echo $separator ?></span>
 			<?php
 			else : ?>
-				<span class="<?php echo( $i - 1 ) ?>-item">
+				<span class="<?php echo( $i - 1 ) ?>-item" itemscope itemtype="http://data-vocabulary.org/Breadcrumb">
 					<?php if( isset( $items[ $i ]['url'] ) ) : ?>
-						<a href="<?php echo esc_attr($items[ $i ]['url']) ?>"><?php echo $items[ $i ]['name'] ?></a></span>
-					<?php else : echo $items[ $i ]['name']; endif ?>
+						<a href="<?php echo esc_attr($items[ $i ]['url']) ?>" itemprop="url"><span itemprop="title"><?php echo $items[ $i ]['name'] ?></span></a>
+				</span>
+					<?php else : echo '<span itemprop="title">'.$items[ $i ]['name'].'</span>'; endif ?>
 				<span class="separator"><?php echo $separator ?></span>
 			<?php endif ?>
 		<?php endfor ?>
