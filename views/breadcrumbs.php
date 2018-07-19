@@ -55,7 +55,9 @@
                     </a>
                     </span>
 				<?php else : echo $items[ $i ]['name']; endif ?>
-                <span class="separator"><?php echo $separator ?></span>
+				<?php if ($separator) { ?>
+					<span class="separator"><?php echo $separator; ?></span>
+				<?php } ?>
 				<?php
 			else : ?>
             <span class="<?php echo( $i - 1 ) ?>-item" itemscope itemtype="http://data-vocabulary.org/Breadcrumb">
@@ -65,7 +67,10 @@
                     </a>
                     </span>
 				<?php else : echo '<span itemprop="title">' . $items[ $i ]['name'] . '</span>'; endif ?>
-                <span class="separator"><?php echo $separator; ?></span>
+
+				<?php if ($separator) { ?>
+					<span class="separator"><?php echo $separator; ?></span>
+				<?php } ?>
 			<?php endif; ?>
 		<?php endfor; ?>
     </div>
