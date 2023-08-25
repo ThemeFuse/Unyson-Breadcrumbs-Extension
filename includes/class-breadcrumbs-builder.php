@@ -2,6 +2,7 @@
 	die( 'Forbidden' );
 }
 
+#[\AllowDynamicProperties]
 class Breadcrumbs_Builder {
 
 	public function __construct( $settings = array() ) {
